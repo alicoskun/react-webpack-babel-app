@@ -1,48 +1,80 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Home from './Home';
+import Login from './Login';
 
-class App extends React.Component {
-	constructor() {
-		super();
-
-		this.state = {
-			data: [
-				{
-					component: 'First',
-					id: 1
-				},
-				{
-					component: 'Second',
-					id: 2
-				},
-				{
-					component: 'Third',
-					id: 3
-				}
-			]
-		}
-	}
+class App extends Component {
 	render() {
 		return (
-			<div>
-				{this.state.data.map((dynamicComponent, i) => 
-					<Content key={i} componentData={dynamicComponent} />)}
-			</div>
+			<Router>
+				<div>
+					<h2>React Router</h2>
+					<ul>
+						<li><Link to={'/'}>Home</Link></li>
+						<li><Link to={'/Login'}>Login</Link></li>
+					</ul>
+					<hr/>
+
+					<Switch>
+						<Route exact path='/' component={Home} />
+						<Route exact path='/Login' component={Login} />
+					</Switch>
+				</div>
+			</Router>
 		);
 	}
 }
 
-class Content extends React.Component {
-	render() {
-		return (
-			<div>
-				<div>{this.props.componentData.component}</div>
-				<div>{this.props.componentData.id}</div>
-			</div>
-		);
-	}
-}
+
+/*	Refs
+ *********************************************************/
+/*********************************************************/
+// import PropTypes from 'prop-types';
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+
+
+// class App extends React.Component {
+// 	constructor() {
+// 		super();
+
+// 		this.state = {
+// 			data: [
+// 				{
+// 					component: 'First',
+// 					id: 1
+// 				},
+// 				{
+// 					component: 'Second',
+// 					id: 2
+// 				},
+// 				{
+// 					component: 'Third',
+// 					id: 3
+// 				}
+// 			]
+// 		}
+// 	}
+// 	render() {
+// 		return (
+// 			<div>
+// 				{this.state.data.map((dynamicComponent, i) => 
+// 					<Content key={i} componentData={dynamicComponent} />)}
+// 			</div>
+// 		);
+// 	}
+// }
+
+// class Content extends React.Component {
+// 	render() {
+// 		return (
+// 			<div>
+// 				<div>{this.props.componentData.component}</div>
+// 				<div>{this.props.componentData.id}</div>
+// 			</div>
+// 		);
+// 	}
+// }
 
 /*	Refs
  *********************************************************/
